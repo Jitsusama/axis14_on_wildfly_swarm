@@ -1,0 +1,16 @@
+# Ignore auto-generated WSDL code
+src/main/java/com/nightfire/soap/*.java
+## Do not ignore customer code
+!src/main/java/com/nightfire/soap/SOAPResponseHandlerServiceSoapBindingImpl.java
+!src/main/java/com/nightfire/soap/package-info.java
+
+# Ignore auto-generated WSDL deployment configuration
+src/main/java/com/nightfire/soap/*.wsdd
+src/main/webapp/WEB-INF/server-config.wsdd
+
+# Ignore project artifacts
+target/
+
+# Ignore IDE configuration
+.idea/
+*.iml

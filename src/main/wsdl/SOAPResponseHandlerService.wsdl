@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--WSDL created by Apache Axis version: 1.4 Built on Apr 22, 2006 (06:55:48 PDT) -->
+<!--suppress XmlUnusedNamespaceDeclaration -->
+<wsdl:definitions targetNamespace="http://soap.nightfire.com"
+	xmlns:apachesoap="http://xml.apache.org/xml-soap"
+	xmlns:impl="http://soap.nightfire.com"
+	xmlns:intf="http://soap.nightfire.com"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:message name="processEventRequest">
+		<wsdl:part name="eventChannelName" type="xsd:string" />
+		<wsdl:part name="event" type="xsd:string" />
+	</wsdl:message>
+
+	<wsdl:message name="processEventResponse" />
+
+	<wsdl:portType name="SOAPResponseHandlerService">
+		<wsdl:operation name="processEvent"
+                        parameterOrder="eventChannelName event">
+			<wsdl:input message="impl:processEventRequest"
+                        name="processEventRequest" />
+			<wsdl:output message="impl:processEventResponse"
+                         name="processEventResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="SOAPResponseHandlerServiceSoapBinding"
+                  type="impl:SOAPResponseHandlerService">
+		<wsdlsoap:binding style="rpc"
+                          transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="processEvent">
+			<wsdlsoap:operation soapAction="" />
+
+			<wsdl:input name="processEventRequest">
+				<wsdlsoap:body
+                        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                        namespace="http://soap.nightfire.com" use="encoded" />
+			</wsdl:input>
+
+			<wsdl:output name="processEventResponse">
+				<wsdlsoap:body
+                        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                        namespace="http://soap.nightfire.com" use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="SOAPResponseHandlerServiceService">
+		<wsdl:port binding="impl:SOAPResponseHandlerServiceSoapBinding"
+                   name="SOAPResponseHandlerService">
+			<wsdlsoap:address location="http://localhost:8080/apacheaxis/services/SOAPResponseHandlerService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
